@@ -1,11 +1,69 @@
 /* nejsme vcerejsi, pouzivame moderni box model */
 *, :after, :before { box-sizing: border-box; }
 
+/*flex-item je i kontejner pro někoho jiného*/
+/*defaultně pro mobil, pro tablet a desktop s @media (media query)*/
+
 body {
 	font-family: sans-serif;
 	font-size: 14px;
-}
+	}
 
 h1 {
 	text-align: center;
+	}
+
+
+h2 {
+	text-align: center;
+	}
+
+/*osoba je dítě od .týmu; margin dát v px;
+na mobilu neni flex -  pro mobil je uz responzivni*/
+	.osoba {
+		border: 1px solid gray;
+		box-shadow: 8px 8px 15px gray;
+		border-radius: 25px;
+		margin-bottom: 20px;
+		padding: 20px;
+		text-align: center;
+		}
+
+	.popis p {
+			text-align: center;
+		}
+
+	.foto img {
+		border-radius: 50%;
+		}
+
+/*tým až zde; display-wrap na .tym - at se potomci v kontejneru zalamují */
+@media (min-width: 540px) {
+	.tym {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+ /*display-flex pro kontejner, flex-basis/flex-grow/flex-shrink na potomka*/
+	.osoba {
+		flex-basis: calc((100% - 20px) / 2);
+		display: flex;
+	}
+
+	.foto {
+		flex-shrink: 0;
+		flex-grow: 0;
+	}
+}
+
+
+@media (min-width: 960px) {
+	.tym {
+		flex-wrap: nowrap;
+	}
+
+	.osoba {
+		flex-basis: calc((100% - 40px) / 4);
+		display: block;
+	}
 }
